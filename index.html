@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Expense Tracker</title>
+  </head>
+  <body>
+    <main>
+      <div class="main-container">
+        <div class="left-box">
+          <header>
+            <div>
+              <h5>Total Balance</h5>
+              <span id="balance">$0.00</span>
+            </div>
+            <div>
+              <h5>Income</h5>
+              <span id="income">$0.00</span>
+            </div>
+            <div>
+              <h5>Expense</h5>
+              <span id="expense">$0.00</span>
+            </div>
+            <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+          </header>
+
+          <!-- BUDGET BAR -->
+          <div id="budgetContainer">
+            <h5>Budget</h5>
+            <div class="budget-bar">
+              <div class="budget-fill" id="budgetFill"></div>
+            </div>
+            <span id="budgetText">$0 / $1000 (0%)</span>
+          </div>
+
+          <!--  TAB SWITCHER  -->
+          <div class="tab-switcher">
+            <button class="tab-btn active" data-tab="transactions">
+              Transactions
+            </button>
+            <button class="tab-btn" data-tab="stats">Stats</button>
+            <button class="tab-btn hidden" data-tab="time">By Time</button>
+          </div>
+
+          <section id="transactionsTab">
+            <h3>Transactions</h3>
+            <div class="transactions-wrapper">
+              <ul
+                id="transactionList"
+                data-placeholder="No transactions yet"
+                data-cta="Add your first one ➕"
+              ></ul>
+            </div>
+          </section>
+
+          <section id="statsTab" style="display: none">
+            <canvas id="expenseChart"></canvas>
+            <canvas id="balanceChart" style="display: none"></canvas>
+          </section>
+        </div>
+
+        <div class="right-box">
+          <section>
+            <h3>Add Transaction</h3>
+            <form id="transactionForm">
+              <div class="full">
+                <label for="type">
+                  <input type="checkbox" name="type" id="type" checked />
+                  <div class="option" data-option="Income">
+                    <span>Expense</span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="full">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required />
+              </div>
+
+              <div class="category-row">
+                <div>
+                  <label for="categoryInput">Category</label>
+                  <select id="categoryInput" name="category" required>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="filterCategory">Filter</label>
+                  <select id="filterCategory">
+                    <option value="all">All</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="amount">Amount</label>
+                <input
+                  type="number"
+                  name="amount"
+                  id="amount"
+                  min="0"
+                  step="any"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date" required />
+              </div>
+
+              <button type="submit">Submit</button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <div id="undoToast" class="undo-toast hidden">
+      <span>Transaction deleted</span>
+      <button id="undoBtn">Undo</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </body>
+</html>

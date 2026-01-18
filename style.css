@@ -1,0 +1,551 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --bg-color: #f6f8fa;
+  --card-bg: #ffffff;
+  --text-color: #1d1f27;
+  --muted-text: #555;
+  --main-color: #3a3dbe;
+  --border-color: #ddd;
+}
+/* DARK MODE */
+body.dark {
+  --bg-color: #0f1115;
+  --card-bg: #161922;
+  --text-color: #e4e6eb;
+  --muted-text: #9aa0a6;
+  --main-color: #5b5fff;
+  --border-color: #2a2f3a;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #c8c8c8;
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+h3,
+header {
+  margin-bottom: 0.5em;
+}
+.main-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+.left-box,
+.right-box {
+  background-color: var(--card-bg);
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+/* Desktop / Notebook */
+.left-box {
+  flex: 2;
+  min-width: 300px;
+}
+
+.right-box {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+}
+main {
+  width: 90%;
+  max-width: 1200px;
+  margin: 1em auto;
+  background-color: var(--card-bg);
+  padding: 1em;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+header {
+  background: linear-gradient(135deg, #3a3dbe, #5b5fff);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+header div {
+  padding: 5px 10px;
+  flex-basis: 33%;
+  text-align: center;
+  border: none;
+}
+header div:first-child h5 {
+  display: block;
+  color: #ffd700;
+  border-bottom: 2px solid #ffd700;
+  padding-bottom: 5px;
+}
+header h5 {
+  font-size: 0.75em;
+  border-bottom: 2px solid #ffd700;
+  padding-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+header div:nth-child(2) h5,
+header div:nth-child(2) span {
+  color: yellowgreen;
+}
+header div:nth-child(3) h5,
+header div:nth-child(3) span {
+  color: red;
+}
+#income,
+#expense {
+  display: inline-block;
+  margin-top: 10px;
+}
+header div:first-child {
+  flex-basis: 100%;
+  font-size: 2.25em;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+header div:first-child span {
+  display: inline-block;
+  animation: pulseBalance 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+/* Puls animation - TOTAL BALANCE */
+@keyframes pulseBalance {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+header div:nth-child(n + 2) {
+  flex-basis: 50%;
+  font-size: 1.25em;
+  font-weight: 500;
+}
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+form select {
+  width: 100%;
+  height: 42px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+form input:not(#type),
+form button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  height: 42px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+}
+form button {
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 0.75em;
+  font-size: 600;
+  text-transform: uppercase;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  grid-column: span 2;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+form button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background-color: #4a4fff;
+}
+
+form button:focus {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+form label {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+}
+form > div.full {
+  grid-column: span 2;
+}
+input#type {
+  appearance: none;
+  position: absolute;
+}
+.option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: yellowgreen;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.option::before {
+  content: attr(data-option);
+}
+.option::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #fff;
+  height: calc(100% - 10px);
+  width: calc(50% - 10px);
+  border-radius: inherit;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 300ms ease, scale 200ms ease;
+}
+.option::before,
+.option span {
+  width: 50%;
+  text-align: center;
+  cursor: inherit;
+  z-index: 2;
+}
+input#type:checked ~ .option {
+  background-color: indianred;
+}
+input#type:checked ~ .option::after {
+  transform: translateX(calc(100% + 10px)) scale(1.03);
+}
+input#type:checked ~ .option span,
+input#type:not(:checked) ~ .option::before {
+  color: #1d1f27;
+}
+input#type:not(:checked) ~ .option::after {
+  scale: 1;
+}
+input[type="date"] {
+  appearance: none;
+  background-color: #fff;
+  color: #1d1f27;
+  text-align: start;
+}
+input:invalid {
+  border-color: red;
+}
+ul {
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+  height: 200px;
+  overflow-y: auto;
+}
+
+ul:empty {
+  border: 2px dashed var(--border-color);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.transactions-wrapper ul:empty::after {
+  animation: ctaPulse 1.6s ease-in-out infinite;
+}
+@keyframes ctaPulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+ul:empty::before {
+  content: "💸\A No transactions yet";
+  white-space: pre-line;
+  text-align: center;
+  color: var(--muted-text);
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-block: 5px;
+  padding: 10px;
+  padding-inline: 10px;
+  position: relative;
+}
+ul li:hover {
+  background: #f6f8fa;
+  cursor: pointer;
+}
+.name {
+  flex: 1;
+}
+.name h4 {
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.name p {
+  font-size: 0.8em;
+  color: var(--muted-text);
+}
+.amount {
+  font-weight: 600;
+}
+.amount-text.income {
+  color: yellowgreen;
+}
+.amount-text.expense {
+  color: red;
+}
+/* DARK MODE */
+#themeToggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+#themeToggle:hover {
+  transform: rotate(20deg);
+}
+form input:not(#type),
+input[type="date"] {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+form input::placeholder {
+  color: var(--muted-text);
+}
+
+body.dark ul li {
+  background-color: #1f2128;
+  color: var(--text-color);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  transition: background-color 200ms ease;
+  outline: none;
+}
+body.dark ul li:hover {
+  background-color: #2a2e3a;
+  cursor: pointer;
+}
+body.dark ul li:focus {
+  background-color: #2a2e3a;
+  outline: 2px solid var(--main-color);
+}
+body.dark input[type="date"] {
+  color-scheme: dark;
+}
+body.dark #themeToggle {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* CATEGORY */
+.category-row {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.category-row > div {
+  width: 100%;
+}
+.flip-card {
+  perspective: 1000px;
+  min-height: 70px;
+}
+.flip-card input {
+  width: 100%;
+  height: 42px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 42px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.flip-front input {
+  height: 42px;
+}
+.flip-back {
+  background: var(--main-color);
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+/* TAB SWITCHER */
+
+.tab-switcher {
+  display: flex;
+  justify-content: center;
+  margin: 1em 0;
+  gap: 10px;
+}
+.tab-btn {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--border-color);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+.tab-btn.active {
+  background-color: var(--main-color);
+  color: #fff;
+}
+.tab-btn.hidden {
+  display: none;
+}
+
+/* STATS SECTION */
+#statsTab {
+  padding: 1em;
+  background-color: var(--card-bg);
+  border-radius: 5px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1em;
+}
+#statsTab .tab-switch {
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+  gap: 10px;
+}
+#statsTab h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#statsTab canvas {
+  max-height: 220px;
+  width: 100%;
+}
+
+/* UNDO BUTTON */
+.undo-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 8px;
+  padding: 0.75em 1em;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
+}
+.undo-toast button {
+  background: none;
+  border: none;
+  color: var(--main-color);
+  font-weight: 600;
+  cursor: pointer;
+}
+.undo-toast.hidden {
+  display: none;
+}
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* BUDGET BAR */
+#budgetContainer {
+  margin-top: 1em;
+  text-align: center;
+}
+.budget-bar {
+  width: 100%;
+  height: 20px;
+  background-color: var(--border-color);
+  border-radius: 10px;
+  margin: 0.5em 0;
+  overflow: hidden;
+}
+.budget-fill {
+  height: 100%;
+  width: 0%;
+  background-color: yellowgreen;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
